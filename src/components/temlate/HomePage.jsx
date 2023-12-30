@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TableCoines from "../module/TableCoines";
 import { getApi } from "../../services/cryptoApi";
+import Pagenation from "../module/pagenation";
 
 const HomePage = () => {
   const [coins, setCoins] = useState([]);
@@ -17,6 +18,7 @@ const HomePage = () => {
 
   return (
     <div>
+      <Pagenation />
       <TableCoines coins={coins} isLoading={isLoading} />
     </div>
   );
