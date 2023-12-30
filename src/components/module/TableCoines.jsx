@@ -3,7 +3,7 @@ import {RotatingLines} from "react-loader-spinner";
 import chartUp from "../../assets/chart-up.svg";
 import chartDown from "../../assets/chart-down.svg";
 
-import styles from "../module/TableCoin.module.css";
+import styles from "./TableCoin.module.css";
 
 const TableCoines = ({ coins, isLoading }) => {
   console.log(coins);

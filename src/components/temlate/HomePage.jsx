@@ -6,20 +6,23 @@ import Pagenation from "../module/pagenation";
 const HomePage = () => {
   const [coins, setCoins] = useState([]);
   const [isLoading,setIsLoading]=useState(true)
+  const [page, setPage] = useState(1);
+
   useEffect(() => {
    const fetchApi=async()=>{
-        const res=await fetch(getApi());
+    setIsLoading(true);
+        const res=await fetch(getApi(page));
         const data= await res.json();
         setCoins(data);
         setIsLoading(false)
    }
    fetchApi();
-  }, []);
+  }, [page]);
 
   return (
     <div>
-      <Pagenation />
       <TableCoines coins={coins} isLoading={isLoading} />
+      <Pagenation page={page} setPage={setPage} />
     </div>
   );
 };
