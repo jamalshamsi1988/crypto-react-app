@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { searchCoins } from '../../services/cryptoApi';
+import { RotatingLines } from 'react-loader-spinner';
 
 const Search = ({curency,setCurrency}) => {
     const [text,setText]=useState("")
     const [coins,setCoins]=useState([])
+    const [isLoading,setIsloading]=useState(false)
 
     useEffect(()=>{
         const controller = new AbortController;
-        if(!text) return;
+        setCoins([])
+        if(!text){
+            setIsloading(false);
+            return;
+        }
+        
         const search=async()=>{
             try {
                 const res=await fetch(searchCoins(text),{signal:controller.signal});
             const data=await res.json()
-            if(data.coins) {setCoins(data.coins)} else{
+
+            if(data.coins) {
+                setCoins(data.coins)
+                setIsloading(false)
+                } else{
                 alert(data.status.error_mssage)
             }
             } catch (error) {
@@ -23,6 +34,7 @@ const Search = ({curency,setCurrency}) => {
             
 
         }
+        setIsloading(true)
         search();
         return ()=> controller.abort();
     },[text])
@@ -35,7 +47,16 @@ const Search = ({curency,setCurrency}) => {
             <option value="jpy">JPY</option>
 
         </select>
-      
+      <div>
+        {
+            isLoading && <RotatingLines strokeWidth='2' strokeColor='aqua' />
+        }
+        <ul>
+            {
+                coins.map(coin => <li key={coin.id}><img src={coin.thumb} alt={coin.name} /><p>{coin.name}</p></li>)
+            }
+        </ul>
+      </div>
     </div>
   )
 }
