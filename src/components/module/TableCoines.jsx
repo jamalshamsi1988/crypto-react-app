@@ -5,7 +5,7 @@ import chartDown from "../../assets/chart-down.svg";
 
 import styles from "./TableCoin.module.css";
 
-const TableCoines = ({ coins, isLoading }) => {
+const TableCoines = ({ coins, isLoading,currency }) => {
   console.log(coins);
   return (
     <div className={styles.container}>
@@ -24,7 +24,7 @@ const TableCoines = ({ coins, isLoading }) => {
           </thead>
           <tbody>
             {coins.map((coin) => (
-              <TableRow key={coin.id} coin={coin} />
+              <TableRow key={coin.id} coin={coin} currency={currency} />
             ))}
           </tbody>
         </table>
@@ -43,6 +43,7 @@ const TableRow = ({
     current_price,
     price_change_percentage_24h,
     total_volume,
+    currency
   },
 }) => {
   return (

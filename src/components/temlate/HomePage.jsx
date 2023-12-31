@@ -24,7 +24,7 @@ const HomePage = () => {
   return (
     <div>
       <Search curency={curency} setCurrency={setCurrency} />
-      <TableCoines coins={coins} isLoading={isLoading} />
+      <TableCoines coins={coins} isLoading={isLoading} curency={curency} />
       <Pagenation page={page} setPage={setPage} />
     </div>
   );
