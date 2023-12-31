@@ -17,7 +17,6 @@ const Chart = ({chart, setChart}) => {
     </div>
   )
 }
-
 export default Chart
 
 const ChartComponent=({data,type})=>{
