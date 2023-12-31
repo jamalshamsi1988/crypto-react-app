@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { searchCoins } from '../../services/cryptoApi';
 import { RotatingLines } from 'react-loader-spinner';
+import { searchCoins } from '../../services/cryptoApi';
+import styles from '../module/Search.module.css'
 
 const Search = ({curency,setCurrency}) => {
     const [text,setText]=useState("")
@@ -39,7 +40,7 @@ const Search = ({curency,setCurrency}) => {
         return ()=> controller.abort();
     },[text])
   return (
-    <div>
+    <div className={styles.searchBox}>
         <input type="text" value={text} onChange={e=> setText(e.target.value)}/>
         <select value={curency} onChange={e => setCurrency(e.target.value)} >
             <option value="usd">USD</option>
@@ -47,7 +48,7 @@ const Search = ({curency,setCurrency}) => {
             <option value="jpy">JPY</option>
 
         </select>
-      <div>
+      <div className={styles.searchResult}>
         {
             isLoading && <RotatingLines strokeWidth='2' strokeColor='aqua' />
         }
