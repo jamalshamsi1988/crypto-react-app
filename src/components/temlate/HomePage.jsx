@@ -13,10 +13,14 @@ const HomePage = () => {
   useEffect(() => {
    const fetchApi=async()=>{
     setIsLoading(true);
-        const res=await fetch(getApi(page,curency));
+        try {
+          const res=await fetch(getApi(page,curency));
         const data= await res.json();
         setCoins(data);
         setIsLoading(false)
+        } catch (error) {
+          console.log(error)
+        }
    }
    fetchApi();
   }, [page,curency]);
