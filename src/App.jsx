@@ -1,12 +1,12 @@
 import HomePage from "./components/temlate/HomePage"
+import Layout from "./layout/Layout"
 
 function App() {
 
   return (
-    <>
-    <h1>Crypto App</h1>
+    <Layout>
     <HomePage />
-    </>
+    </Layout>
   )
 }
 

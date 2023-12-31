@@ -7,7 +7,7 @@ const Search = ({ curency, setCurrency }) => {
   const [text, setText] = useState("");
   const [coins, setCoins] = useState([]);
   const [isLoading, setIsloading] = useState(false);
-
+console.log(curency)
   useEffect(() => {
     const controller = new AbortController();
     setCoins([]);
