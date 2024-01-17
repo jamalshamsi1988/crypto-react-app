@@ -9,7 +9,7 @@ const HomePage = () => {
   const [coins, setCoins] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [curency, setCurrency] = useState("usd");
+  const [curency, setCurency] = useState("usd");
   const [chart, setChart] = useState(null);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Search curency={curency} setCurrency={setCurrency} />
+      <Search curency={curency} setCurency={setCurency} />
       <TableCoines coins={coins} isLoading={isLoading} curency={curency} setChart={setChart} />
       <Pagenation page={page} setPage={setPage} />
       {!!chart && <Chart chart={chart} setChart={setChart} />}

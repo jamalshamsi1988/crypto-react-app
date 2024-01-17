@@ -3,7 +3,7 @@ import { RotatingLines } from "react-loader-spinner";
 import { searchCoins } from "../../services/cryptoApi";
 import styles from "../module/Search.module.css";
 
-const Search = ({ curency, setCurrency }) => {
+const Search = ({ curency, setCurency }) => {
   const [text, setText] = useState("");
   const [coins, setCoins] = useState([]);
   const [isLoading, setIsloading] = useState(false);
@@ -46,7 +46,7 @@ console.log(curency)
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <select value={curency} onChange={(e) => setCurrency(e.target.value)}>
+      <select value={curency} onChange={(e) => setCurency(e.target.value)}>
         <option value="usd">USD</option>
         <option value="eur">EUR</option>
         <option value="jpy">JPY</option>

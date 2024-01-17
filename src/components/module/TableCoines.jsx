@@ -6,8 +6,8 @@ import chartDown from "../../assets/chart-down.svg";
 import styles from "./TableCoin.module.css";
 import { marketChart } from "../../services/cryptoApi";
 
-const TableCoines = ({ coins, isLoading,currency,setCurrency,setChart }) => {
-  console.log(coins);
+const TableCoines = ({ coins, isLoading,curency,setCurency,setChart }) => {
+  console.log(curency);
   return (
     <div className={styles.container}>
       {isLoading ? (
@@ -25,7 +25,7 @@ const TableCoines = ({ coins, isLoading,currency,setCurrency,setChart }) => {
           </thead>
           <tbody>
             {coins.map((coin) => (
-              <TableRow key={coin.id} coin={coin} currency={currency} setCurrency={setCurrency} setChart={setChart}/>
+              <TableRow key={coin.id} coin={coin} curency={curency} setCurency={setCurency} setChart={setChart}/>
             ))}
           </tbody>
         </table>
@@ -38,9 +38,9 @@ export default TableCoines;
 
 const TableRow = ({
   coin,
-  currency,
+  curency,
   setChart,
-  setCurrency,
+  setCurency,
 }) => {
   const  {
     name,
@@ -70,7 +70,7 @@ const TableRow = ({
         </div>
       </td>
       <td>{name}</td>
-      <td>$ {current_price.toLocaleString()}</td>
+      <td>{curency === "usd" ? <span>$</span> : curency === "eur" ? <span>€</span> : curency === "jpy" ? <span>¥</span> : ""  } {current_price.toLocaleString()}</td>
       <td className={price_change_percentage_24h > 0 ? styles.success : styles.error} > {price_change_percentage_24h.toFixed(2)}%</td>
       <td>{total_volume.toLocaleString()}</td>
       <td>
